@@ -1,0 +1,27 @@
+{
+  "name": "vscode-extension-info-fetcher",
+  "version": "1.0.0",
+  "description": "A Node.js script to fetch VS Code extension information from the marketplace",
+  "main": "fetch-extension-info.js",
+  "scripts": {
+    "analyse-extensions": "node fetch-extension-info.js",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "vscode",
+    "extensions",
+    "marketplace",
+    "api"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+} 

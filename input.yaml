@@ -1,0 +1,7 @@
+# DEMO: replace with real data from running user_extensions_yaml.sh
+michael:
+  - ms-azuretools.vscode-docker-2.0.0
+jon:
+  - ms-azuretools.vscode-docker-2.0.0
+  - github.vscode-pull-request-github-0.112.0
+  - rust-lang.rust-analyzer-0.3.2500-darwin-arm64
