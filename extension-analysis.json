@@ -2,15 +2,18 @@
   "extensions": {
     "ms-azuretools.vscode-docker": {
       "name": "Docker",
-      "description": "Makes it easy to create, manage, and debug containerized applications."
+      "description": "Makes it easy to create, manage, and debug containerized applications.",
+      "publisher": "Microsoft"
     },
     "github.vscode-pull-request-github": {
       "name": "GitHub Pull Requests",
-      "description": "Pull Request and Issue Provider for GitHub"
+      "description": "Pull Request and Issue Provider for GitHub",
+      "publisher": "GitHub"
     },
     "rust-lang.rust-analyzer": {
       "name": "rust-analyzer",
-      "description": "Rust language support for Visual Studio Code"
+      "description": "Rust language support for Visual Studio Code",
+      "publisher": "The Rust Programming Language "
     }
   },
   "users": {

@@ -74,11 +74,13 @@ function fetchExtensionInfo(identifier) {
             resolve({
               name: extension.displayName || extension.extensionName,
               description: extension.shortDescription || extension.description,
+              publisher: extension.publisher?.displayName || extension.publisher?.publisherName || "Unknown",
             });
           } else {
             resolve({
               name: identifier,
               description: "Extension not found in marketplace",
+              publisher: "Unknown",
             });
           }
         } catch (error) {
@@ -124,6 +126,7 @@ async function processExtensions(extensions, delayMs = 100) {
       results[parsed.identifier] = {
         name: parsed.identifier,
         description: `Error: ${error.message}`,
+        publisher: "Unknown",
       };
     }
   }

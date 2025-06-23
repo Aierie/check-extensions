@@ -56,7 +56,12 @@ async function loadExtensionData() {
                                         ${extension.name}
                                     </a>
                                 </div>
-                                <div class="extension-stat-description">${extension.description}</div>
+                                <div class="extension-stat-description">
+                                    <div>${extension.description}</div>
+                                    <div style="font-size: 12px; color: #0366d6; margin-top: 4px;">
+                                        by ${extension.publisher || 'Unknown'}
+                                    </div>
+                                </div>
                             </div>
                             <div class="extension-stat-count">
                                 <span class="count-number">${extension.count}</span>
@@ -90,7 +95,7 @@ async function loadExtensionData() {
                 })
                 .sort((a, b) => a.name.localeCompare(b.name));
             
-            const extensionsHtml = sortedGroupedExtensions.map(({ identifier, extensionVersions, name, description }) => {
+            const extensionsHtml = sortedGroupedExtensions.map(({ identifier, extensionVersions, name, description, publisher }) => {
                 // Create version tags
                 const versionTags = extensionVersions.map(extension => 
                     `<span class="extension-version">v${extension.version}</span>`
@@ -104,7 +109,12 @@ async function loadExtensionData() {
                                     ${name}
                                 </a>
                             </div>
-                            <div class="extension-description">${description}</div>
+                            <div class="extension-description">
+                                <div>${description}</div>
+                                <div style="font-size: 12px; color: #0366d6; margin-top: 2px;">
+                                    by ${publisher || 'Unknown'}
+                                </div>
+                            </div>
                         </div>
                         <div class="extension-versions">
                             ${versionTags}
