@@ -372,6 +372,12 @@ async function analyzeExtensions(yamlInput) {
             users: users,
         };
 
+        // Store the data globally for saving
+        window.lastAnalyzedData = output;
+
+        // Automatically save the data to localStorage
+        saveDataToLocalStorage(output, true);
+
         console.log(
             `✅ Successfully processed ${Object.keys(users).length} users and ${
                 uniqueExtensions.length
@@ -541,12 +547,65 @@ async function copyToClipboard(text) {
 }
 
 // Function to show copy feedback
-function showCopyFeedback() {
+function showCopyFeedback(message = 'Copied to clipboard!') {
     const feedback = document.getElementById('copyFeedback');
+    feedback.textContent = message;
     feedback.classList.add('show');
     setTimeout(() => {
         feedback.classList.remove('show');
     }, 2000);
+}
+
+// Function to save data to localStorage
+function saveDataToLocalStorage(data, autoSave = false) {
+    try {
+        localStorage.setItem('vscodeExtensionData', JSON.stringify(data));
+        if (autoSave) {
+            showCopyFeedback('Data automatically saved!');
+        } else {
+            showCopyFeedback('Data saved successfully!');
+        }
+        console.log('Data saved to localStorage');
+    } catch (error) {
+        console.error('Error saving data to localStorage:', error);
+        showError('Failed to save data to localStorage. Data may be too large.');
+    }
+}
+
+// Function to load data from localStorage
+function loadDataFromLocalStorage() {
+    try {
+        const savedData = localStorage.getItem('vscodeExtensionData');
+        if (savedData) {
+            const data = JSON.parse(savedData);
+            displayResults(data);
+            showCopyFeedback('Data restored successfully!');
+            return data;
+        } else {
+            showError('No saved data found in localStorage.');
+            return null;
+        }
+    } catch (error) {
+        console.error('Error loading data from localStorage:', error);
+        showError('Failed to load data from localStorage. Data may be corrupted.');
+        return null;
+    }
+}
+
+// Function to clear saved data from localStorage
+function clearSavedData() {
+    try {
+        localStorage.removeItem('vscodeExtensionData');
+        showCopyFeedback('Saved data cleared!');
+        console.log('Saved data cleared from localStorage');
+        // Reset the UI to initial state
+        document.getElementById('app').innerHTML = `
+            <div class="loading">Enter YAML data above and click "Analyze Extensions" to get started.</div>
+        `;
+    } catch (error) {
+        console.error('Error clearing data from localStorage:', error);
+        showError('Failed to clear saved data from localStorage.');
+    }
 }
 
 // Initialize the application
@@ -556,6 +615,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const loadExample = document.getElementById('loadExample');
     const copyAccessScript = document.getElementById('copyAccessScript');
     const copyYamlScript = document.getElementById('copyYamlScript');
+    const clearDataButton = document.getElementById('clearDataButton');
+
+    // Check for saved data and restore automatically
+    const savedData = localStorage.getItem('vscodeExtensionData');
+    if (savedData) {
+        try {
+            const data = JSON.parse(savedData);
+            window.lastAnalyzedData = data;
+            displayResults(data);
+            showCopyFeedback('Previous data restored automatically!');
+        } catch (error) {
+            console.error('Error restoring data from localStorage:', error);
+            // Don't show error to user on page load, just log it
+        }
+    }
 
     // Handle analyze button click
     analyzeButton.addEventListener('click', async function() {
@@ -592,6 +666,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Handle copy YAML script click
     copyYamlScript.addEventListener('click', function() {
         copyToClipboard(yamlScriptContent);
+    });
+
+    // Handle clear data button click
+    clearDataButton.addEventListener('click', function() {
+        if (confirm('Are you sure you want to clear all saved data?')) {
+            clearSavedData();
+        }
     });
 
     // Handle Enter key in textarea
