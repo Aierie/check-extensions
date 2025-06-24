@@ -81,6 +81,36 @@
             background: #6c757d;
             cursor: not-allowed;
         }
+        .data-actions {
+            margin-top: 10px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .action-button {
+            background: #17a2b8;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        .action-button:hover {
+            background: #138496;
+        }
+        .action-button:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+        }
+        .action-button.danger {
+            background: #dc3545;
+        }
+        .action-button.danger:hover {
+            background: #c82333;
+        }
         .example-link {
             color: #0366d6;
             text-decoration: none;
@@ -330,6 +360,18 @@
         .instruction-item strong {
             font-weight: 600;
         }
+        .data-persistence-info {
+            margin-top: 15px;
+            padding: 15px;
+            background: #e8f5e8;
+            border-radius: 6px;
+            border: 1px solid #28a745;
+        }
+        .data-persistence-info h4 {
+            margin: 0 0 10px 0;
+            color: #155724;
+            font-size: 16px;
+        }
         @media (max-width: 768px) {
             .extension-stats {
                 grid-template-columns: 1fr;
@@ -355,10 +397,6 @@
                 <textarea id="yamlInput" class="yaml-input" placeholder="Enter your YAML data here..."></textarea>
                 <button id="analyzeButton" class="submit-button">Analyze Extensions</button>
                 <a href="#" id="loadExample" class="example-link">Load Example</a>
-                <div class="script-buttons">
-                    <button id="copyAccessScript" class="script-button">Copy Extension Access Check Script</button>
-                    <button id="copyYamlScript" class="script-button">Copy YAML Generator Script</button>
-                </div>
                 <div class="script-instructions">
                     <h4>Script Usage Instructions:</h4>
                     <div class="instruction-item">
@@ -367,6 +405,17 @@
                     <div class="instruction-item">
                         <strong>YAML Generator Script:</strong> Outputs YAML to stdout that can be used as input for the site. It is best to check extension access before running this.
                     </div>
+                    <div class="script-buttons">
+                        <button id="copyAccessScript" class="script-button">Copy Extension Access Check Script</button>
+                        <button id="copyYamlScript" class="script-button">Copy YAML Generator Script</button>
+                    </div>
+                </div>
+                <div class="data-persistence-info">
+                    <h4>Data Persistence:</h4>
+                    <div class="instruction-item">
+                        Analysis results are automatically saved to your browser's localStorage and restored when you return to this page.
+                    </div>
+                    <button id="clearDataButton" class="action-button danger">Clear Saved Data</button>
                 </div>
                 <div id="progressContainer" style="display: none;">
                     <div class="progress-bar">
