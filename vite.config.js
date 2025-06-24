@@ -7,6 +7,13 @@ export default defineConfig({
   },
   publicDir: '.',
   build: {
-    outDir: 'dist'
-  }
+    outDir: 'dist',
+    rollupOptions: {
+      output: {
+        manualChunks: undefined
+      }
+    }
+  },
+  // For GitHub Pages deployment
+  base: process.env.NODE_ENV === 'production' ? '/check-extensions/' : '/'
 }) 

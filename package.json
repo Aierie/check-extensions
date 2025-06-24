@@ -1,20 +1,23 @@
 {
-  "name": "vscode-extension-info-fetcher",
+  "name": "vscode-extension-analyzer",
   "version": "1.0.0",
-  "description": "A Node.js script to fetch VS Code extension information from the marketplace",
-  "main": "fetch-extension-info.js",
+  "description": "A web application to analyze VS Code extension usage across multiple users",
+  "main": "main.js",
   "scripts": {
     "analyse-extensions": "node fetch-extension-info.js",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "deploy": "npm run build && gh-pages -d dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "vscode",
     "extensions",
     "marketplace",
-    "api"
+    "api",
+    "analysis",
+    "web-app"
   ],
   "author": "",
   "license": "MIT",
@@ -22,6 +25,8 @@
     "node": ">=14.0.0"
   },
   "devDependencies": {
-    "vite": "^5.0.0"
-  }
+    "vite": "^5.0.0",
+    "gh-pages": "^6.1.0"
+  },
+  "homepage": "https://michael.github.io/check-extensions"
 } 
