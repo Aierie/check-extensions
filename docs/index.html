@@ -312,6 +312,24 @@
             color: #586069;
             margin-top: 5px;
         }
+        .script-instructions {
+            margin-top: 15px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border: 1px solid #e1e4e8;
+        }
+        .script-instructions h4 {
+            margin: 0 0 15px 0;
+            color: #24292e;
+            font-size: 18px;
+        }
+        .instruction-item {
+            margin-bottom: 10px;
+        }
+        .instruction-item strong {
+            font-weight: 600;
+        }
         @media (max-width: 768px) {
             .extension-stats {
                 grid-template-columns: 1fr;
@@ -340,6 +358,15 @@
                 <div class="script-buttons">
                     <button id="copyAccessScript" class="script-button">Copy Extension Access Check Script</button>
                     <button id="copyYamlScript" class="script-button">Copy YAML Generator Script</button>
+                </div>
+                <div class="script-instructions">
+                    <h4>Script Usage Instructions:</h4>
+                    <div class="instruction-item">
+                        <strong>Extension Access Check Script:</strong> Provides verbose output of the result of listing each user's vscode-server extensions directory to see if there are issues with access or finding the extensions directory.
+                    </div>
+                    <div class="instruction-item">
+                        <strong>YAML Generator Script:</strong> Outputs YAML to stdout that can be used as input for the site. It is best to check extension access before running this.
+                    </div>
                 </div>
                 <div id="progressContainer" style="display: none;">
                     <div class="progress-bar">
