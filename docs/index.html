@@ -90,6 +90,47 @@
         .example-link:hover {
             text-decoration: underline;
         }
+        .script-buttons {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .script-button {
+            background: #6f42c1;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        .script-button:hover {
+            background: #5a32a3;
+        }
+        .script-button:active {
+            background: #4c2b8a;
+        }
+        .copy-feedback {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-size: 14px;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        .copy-feedback.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
         .stats-section {
             margin-bottom: 30px;
         }
@@ -280,6 +321,9 @@
                 gap: 10px;
                 align-items: flex-start;
             }
+            .script-buttons {
+                flex-direction: column;
+            }
         }
     </style>
   <script type="module" crossorigin src="/check-extensions/assets/index-B5Qt9EMX.js"></script>
@@ -293,6 +337,10 @@
                 <textarea id="yamlInput" class="yaml-input" placeholder="Enter your YAML data here..."></textarea>
                 <button id="analyzeButton" class="submit-button">Analyze Extensions</button>
                 <a href="#" id="loadExample" class="example-link">Load Example</a>
+                <div class="script-buttons">
+                    <button id="copyAccessScript" class="script-button">Copy Extension Access Check Script</button>
+                    <button id="copyYamlScript" class="script-button">Copy YAML Generator Script</button>
+                </div>
                 <div id="progressContainer" style="display: none;">
                     <div class="progress-bar">
                         <div id="progressFill" class="progress-fill" style="width: 0%"></div>
@@ -305,6 +353,7 @@
             </div>
         </div>
     </div>
+    <div id="copyFeedback" class="copy-feedback">Copied to clipboard!</div>
     <script type="module" src="/check-extensions/main.js"></script>
 </body>
 </html> 
