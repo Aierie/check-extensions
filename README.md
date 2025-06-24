@@ -11,11 +11,6 @@ A web application that analyzes VS Code extension usage across multiple users. T
 - **Progress Tracking**: Real-time progress updates during processing
 - **Responsive Design**: Works on desktop and mobile devices
 
-## Live Demo
-
-The application is deployed on GitHub Pages and can be accessed at:
-[https://michael.github.io/check-extensions](https://michael.github.io/check-extensions)
-
 ## YAML Input Format
 
 The application expects YAML data in the following format:
@@ -68,7 +63,6 @@ jon:
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build
-- `npm run deploy` - Build and deploy to GitHub Pages (requires gh-pages package)
 
 ## Data Collection
 
@@ -95,31 +89,6 @@ npm run analyse-extensions
 ```
 
 This script processes `input.yaml` and generates `extension-analysis.json` for the old static approach.
-
-## GitHub Pages Deployment
-
-The application is automatically deployed to GitHub Pages using GitHub Actions.
-
-### Manual Deployment
-
-To deploy manually:
-
-1. Install the gh-pages package:
-   ```bash
-   npm install --save-dev gh-pages
-   ```
-
-2. Deploy:
-   ```bash
-   npm run deploy
-   ```
-
-### Automatic Deployment
-
-The GitHub Actions workflow (`.github/workflows/deploy.yml`) automatically:
-- Builds the application on push to main branch
-- Deploys to GitHub Pages
-- Uses the `dist` directory as the source
 
 ## Architecture
 
