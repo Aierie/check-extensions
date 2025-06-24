@@ -7,7 +7,7 @@ export default defineConfig({
   },
   publicDir: './public',
   build: {
-    outDir: 'dist',
+    outDir: 'docs',
     rollupOptions: {
       output: {
         manualChunks: undefined

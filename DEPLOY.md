@@ -1,6 +1,6 @@
 # Manual Deployment to GitHub Pages
 
-This document describes how to manually deploy the VS Code Extension Analyzer web application to GitHub Pages using the `/dist` folder approach. This method does not require the `gh-pages` npm package or a separate branch.
+This document describes how to manually deploy the VS Code Extension Analyzer web application to GitHub Pages using the `/docs` folder approach. This method does not require the `gh-pages` npm package or a separate branch.
 
 ---
 
@@ -23,20 +23,20 @@ Before deploying, ensure you have the following:
 
 ---
 
-## Deployment Steps (Using `/dist` Folder)
+## Deployment Steps (Using `/docs` Folder)
 
 1. **Build Your Site**
 
-   Run the Vite build command to generate the production files in the `dist` directory:
+   Run the Vite build command to generate the production files in the `docs` directory:
    ```bash
    npm run build
    ```
 
-2. **Commit and Push the `dist` Folder**
+2. **Commit and Push the `docs` Folder**
 
-   Add the `dist` folder to your repository and push:
+   Add the `docs` folder to your repository and push:
    ```bash
-   git add dist
+   git add docs
    git commit -m "Build for GitHub Pages"
    git push
    ```
@@ -45,7 +45,7 @@ Before deploying, ensure you have the following:
 
    - Go to your repository on GitHub.
    - Click on **Settings** > **Pages**.
-   - Under **Source**, select the `main` branch and `/dist` folder.
+   - Under **Source**, select the `main` branch and `/docs` folder.
    - Save the settings.
 
 4. **Access Your Deployed Site**
@@ -60,8 +60,8 @@ Before deploying, ensure you have the following:
 ## Notes
 
 - If you change your repository name, update the `base` option in `vite.config.js`.
-- If you encounter a blank page or 404, ensure the `base` path matches your repository name and that the GitHub Pages source is set to the `/dist` folder on the `main` branch.
-- The `/dist` folder must be committed to your repository for GitHub Pages to serve it.
+- If you encounter a blank page or 404, ensure the `base` path matches your repository name and that the GitHub Pages source is set to the `/docs` folder on the `main` branch.
+- The `/docs` folder must be committed to your repository for GitHub Pages to serve it.
 
 ---
 
